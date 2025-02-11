@@ -41,9 +41,9 @@
         <li>
           <a href="{{ route('chatbots') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Chatbots</a>
         </li>
-        <li>
+        <!--li>
           <a href="{{ route('recursos') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Recursos</a>
-        </li>
+        </li-->
       </ul>
       <!-- Botón Menú Móvil -->
       <button id="mobile-menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
@@ -65,9 +65,9 @@
         <li>
           <a href="{{ route('chatbots') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Chatbots</a>
         </li>
-        <li>
+        <!--li>
           <a href="{{ route('recursos') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Recursos</a>
-        </li>
+        </li-->
       </ul>
     </div>
   </header>
@@ -78,30 +78,31 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-primary-200 shadow-inner">
+  <footer class="bg-gradient-to-r from-purple-700 to-indigo-700 text-white shadow-lg">
     <div class="max-w-7xl mx-auto px-6 py-12">
       <div class="flex flex-col md:flex-row items-center justify-between">
-        <div class="text-center md:text-left mb-4 md:mb-0">
-          <p class="text-lg font-medium text-primary-600">Estamos aquí para ayudarte</p>
-          <p class="text-sm text-primary-500">&copy; {{ date('Y') }} Zenith IA - Innovación y Soporte 24/7</p>
+        <div class="text-center md:text-left mb-6 md:mb-0">
+          <p class="text-lg font-semibold text-primary-100">Estamos aquí para ayudarte</p>
+          <p class="text-sm text-primary-200">&copy; {{ date('Y') }} Zenith IA - Innovación y Soporte 24/7</p>
         </div>
-        <div class="flex space-x-6">
-          <a href="#" class="p-2 bg-white rounded-full hover:bg-primary-100 transition-colors">
-            <i class="fab fa-facebook-f text-primary-600"></i>
+        <div class="flex space-x-6 justify-center md:justify-end">
+          <a href="#" class="p-3 bg-white rounded-full text-primary-600 hover:bg-primary-100 transition-all duration-300 transform hover:scale-105">
+            <i class="fab fa-facebook-f"></i>
           </a>
-          <a href="#" class="p-2 bg-white rounded-full hover:bg-primary-100 transition-colors">
-            <i class="fab fa-twitter text-primary-600"></i>
+          <a href="#" class="p-3 bg-white rounded-full text-primary-600 hover:bg-primary-100 transition-all duration-300 transform hover:scale-105">
+            <i class="fab fa-twitter"></i>
           </a>
-          <a href="#" class="p-2 bg-white rounded-full hover:bg-primary-100 transition-colors">
-            <i class="fab fa-instagram text-primary-600"></i>
+          <a href="#" class="p-3 bg-white rounded-full text-primary-600 hover:bg-primary-100 transition-all duration-300 transform hover:scale-105">
+            <i class="fab fa-instagram"></i>
           </a>
-          <a href="#" class="p-2 bg-white rounded-full hover:bg-primary-100 transition-colors">
-            <i class="fab fa-linkedin-in text-primary-600"></i>
+          <a href="#" class="p-3 bg-white rounded-full text-primary-600 hover:bg-primary-100 transition-all duration-300 transform hover:scale-105">
+            <i class="fab fa-linkedin-in"></i>
           </a>
         </div>
       </div>
     </div>
   </footer>
+
 
   @vite('resources/js/app.js')
 

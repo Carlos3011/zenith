@@ -148,34 +148,4 @@
         </div>
     </section>
 
-    <!-- Sección de testimonios -->
-    <section class="mb-16 px-4" data-aos="fade-up">
-        <h2 class="text-3xl font-bold text-center mb-12">Experiencias de Usuarios</h2>
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-6 rounded-xl shadow-md">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                        <span class="text-purple-600 font-semibold">AC</span>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold">Ana C.</h4>
-                        <p class="text-gray-600 text-sm">Usuario desde 2023</p>
-                    </div>
-                </div>
-                <p class="text-gray-600">"El chatbot me ayudó a identificar patrones que ni yo misma había notado. Cuando mi evaluación salió alta, me conectaron con un psicólogo en menos de 24 horas"</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md">
-                <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                        <span class="text-purple-600 font-semibold">DR</span>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold">David R.</h4>
-                        <p class="text-gray-600 text-sm">Psicólogo Colaborador</p>
-                    </div>
-                </div>
-                <p class="text-gray-600">"El sistema de alertas nos permite intervenir a tiempo con pacientes en riesgo. Las evaluaciones de IA son sorprendentemente precisas"</p>
-            </div>
-        </div>
-    </section>
 @endsection

@@ -4,21 +4,43 @@
 
 @section('content')
     <!-- Sección de cabecera -->
-    <section class="text-center py-16 bg-gradient-to-r from-primary-200 to-purple-400">
-        <h1 class="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">Aquí comienza el Zenith</h1>
-        <p class="text-lg mt-4 text-white max-w-3xl mx-auto">
-            Explora nuestros chatbots especializados en ansiedad y depresión.
-        </p>
+    <section class="relative text-center py-20 bg-gradient-to-br from-purple-500 to-cyan-600 overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml;utf8,<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><rect width='100' height='100' fill='none' stroke='white' stroke-width='2' stroke-dasharray='5 5'/></svg>')"></div>
+        <div class="relative max-w-4xl mx-auto px-4">
+           
+            <h1 id="typed-slogan"class="text-5xl font-black text-cyan-300 mb-6 leading-tight animate-fade-in-down">
+            </h1>
+            <p class="text-xl text-purple-100 font-medium mb-8 opacity-90">
+                Descubre herramientas inteligentes para tu salud mental
+            </p>
+            <div class="animate-bounce-slow">
+                <svg class="w-20 h-20 mx-auto text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+            </div>
+        </div>
     </section>
 
     <!-- Sección interactiva con el chatbot -->
-    <section class="py-16 bg-white text-center" data-aos="fade-up">
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-purple-50" data-aos="fade-up">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-extrabold text-cyan-500 mb-8">Interacción con el Chatbot</h2>
-            <p class="text-lg text-purple-900 sm:text-xl mb-12 max-w-3xl mx-auto">
+            <h2 class="text-center text-3xl font-extrabold text-cyan-500 mb-8">Interacción con el Chatbot</h2>
+            <p class="text-center text-lg text-purple-900 sm:text-xl mb-12 max-w-3xl mx-auto">
                 Inicia una conversación con nuestro chatbot para detectar señales de depresión o ansiedad. Haz clic en el botón para comenzar la evaluación.
             </p>
-
+            <div class="text-center mb-10">
+                <div class="inline-flex items-center bg-cyan-100 text-cyan-800 px-6 py-2 rounded-full mb-4">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="font-semibold">Test Confidencial</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Evaluación Personalizada</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    Nuestro sistema inteligente te guiará mediante preguntas simples para entender mejor tu estado emocional.
+                </p>
+            </div>
             <!-- Contenedor de botones -->
             <div id="interaction-container" class="relative group cursor-pointer p-12 rounded-xl bg-gradient-to-r from-primary-100 to-purple-200 hover:scale-105 transition-all duration-500 ease-in-out shadow-2xl">
                 <div class="absolute inset-0 bg-opacity-40 bg-white rounded-xl"></div>
@@ -29,12 +51,33 @@
                     <p class="text-sm text-gray-700 mb-4">
                         <strong>Responde con:</strong> 1 (Nada), 2 (Pocos días), 3 (Más de la mitad de los días), 4 (Casi todos los días).
                     </p>
-                    <div class="flex justify-center gap-6">
-                        <button id="depression-btn" class="px-8 py-3 bg-cyan-600 text-white rounded-lg font-semibold text-lg hover:bg-cyan-500 transition duration-300">
-                            Detección de Depresión
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <button id="depression-btn" class="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-transparent hover:border-cyan-500 group">
+                            <div class="flex items-center">
+                                <div class="w-14 h-14 bg-cyan-100 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-8 h-8 text-cyan-600 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-1">Depresión</h3>
+                                    <p class="text-gray-600 text-sm">Test PHQ-8 validado</p>
+                                </div>
+                            </div>
                         </button>
-                        <button class="px-8 py-3 bg-gray-400 text-white rounded-lg font-semibold text-lg cursor-not-allowed opacity-60 hover:bg-gray-400 transition duration-300">
-                            Detección de Ansiedad (Próximamente)
+                        
+                        <button class="p-6 bg-white rounded-xl shadow-lg cursor-not-allowed opacity-70" disabled>
+                            <div class="flex items-center">
+                                <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                    </svg>
+                                </div>
+                                <div class="text-left">
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-1">Ansiedad</h3>
+                                    <p class="text-gray-600 text-sm">Próximamente</p>
+                                </div>
+                            </div>
                         </button>
                     </div>
                 </div>

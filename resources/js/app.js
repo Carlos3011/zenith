@@ -20,6 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
         loop: true
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    new Typed('#typed-slogan', {
+        strings: ["Alcanza tu punto más alto"],
+        typeSpeed: 100,
+        backSpeed: 50,
+        showCursor: false,
+    });
+});
 
 document.addEventListener("DOMContentLoaded", () =>{
     new Typed("#typed-mision", {
