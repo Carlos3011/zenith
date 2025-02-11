@@ -22,7 +22,6 @@
     <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <!-- Logo -->
       <a href="{{ route('inicio') }}" class="flex items-center gap-2">
-        <i class="fa-solid fa-robot text-accent-600 text-2xl"></i>
         <span class="text-2xl font-bold bg-gradient-to-r from-accent-600 to-primary-600 bg-clip-text text-transparent">
           Zenith IA
         </span>
