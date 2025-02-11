@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@yield('title', 'Zenith IA')</title>
+
+  @vite('resources/css/app.css')
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    .blob {
+      background: linear-gradient(45deg, #38bdf8 0%, #a855f7 100%);
+      filter: blur(60px);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-primary-200 to-purple-200 min-h-screen">
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-primary-100 shadow-sm">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="{{ route('inicio') }}" class="flex items-center gap-2">
+        <i class="fa-solid fa-robot text-accent-600 text-2xl"></i>
+        <span class="text-2xl font-bold bg-gradient-to-r from-accent-600 to-primary-600 bg-clip-text text-transparent">
+          Zenith IA
+        </span>
+      </a>
+      <!-- Menú Desktop -->
+      <ul class="hidden md:flex items-center gap-8">
+        <li>
+          <a href="{{ route('inicio') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Inicio</a>
+        </li>
+        <li>
+          <a href="{{ route('acerca') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Acerca</a>
+        </li>
+        <li>
+          <a href="{{ route('miembros') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Equipo</a>
+        </li>
+        <li>
+          <a href="{{ route('chatbots') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Chatbots</a>
+        </li>
+        <li>
+          <a href="{{ route('recursos') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Recursos</a>
+        </li>
+      </ul>
+      <!-- Botón Menú Móvil -->
+      <button id="mobile-menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </nav>
+    <!-- Menú Móvil -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-md border-t border-primary-100">
+      <ul class="flex flex-col space-y-2 px-6 py-4">
+        <li>
+          <a href="{{ route('inicio') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Inicio</a>
+        </li>
+        <li>
+          <a href="{{ route('acerca') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Acerca</a>
+        </li>
+        <li>
+          <a href="{{ route('miembros') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Equipo</a>
+        </li>
+        <li>
+          <a href="{{ route('chatbots') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Chatbots</a>
+        </li>
+        <li>
+          <a href="{{ route('recursos') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Recursos</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="pt-24 pb-12">
+    @yield('content')
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-primary-200 shadow-inner">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between">
+        <div class="text-center md:text-left mb-4 md:mb-0">
+          <p class="text-lg font-medium text-primary-600">Estamos aquí para ayudarte</p>
+          <p class="text-sm text-primary-500">&copy; {{ date('Y') }} Zenith IA - Innovación y Soporte 24/7</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="p-2 bg-white rounded-full hover:bg-primary-100 transition-colors">
+            <i class="fab fa-facebook-f text-primary-600"></i>
+          </a>
+          <a href="#" class="p-2 bg-white rounded-full hover:bg-primary-100 transition-colors">
+            <i class="fab fa-twitter text-primary-600"></i>
+          </a>
+          <a href="#" class="p-2 bg-white rounded-full hover:bg-primary-100 transition-colors">
+            <i class="fab fa-instagram text-primary-600"></i>
+          </a>
+          <a href="#" class="p-2 bg-white rounded-full hover:bg-primary-100 transition-colors">
+            <i class="fab fa-linkedin-in text-primary-600"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  @vite('resources/js/app.js')
+
+
+</body>
+</html>
