@@ -53,13 +53,7 @@
                     <button id="close-modal" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
                 </div>
                 <!-- Área de conversación -->
-                <div id="chatbox" class="mb-4 p-4 bg-gray-100 rounded-lg h-64 overflow-y-auto">
-                    <div class="text-gray-800">
-                        ¡Hola! Soy tu asistente. Comenzaremos el test PHQ-8.<br>
-                        Responde con 1, 2, 3 o 4 según lo siguiente:<br>
-                        1: Nada, 2: Pocos días, 3: Más de la mitad de los días, 4: Casi todos los días.
-                    </div>
-                </div>
+                <div id="chatbox" class="mb-4 p-4 bg-gray-100 rounded-lg h-64 overflow-y-auto"></div>
                 <!-- Área para ingresar respuesta -->
                 <div id="phq-8-form">
                     <input type="text" id="user-response" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Escribe 1, 2, 3 o 4" />
@@ -79,10 +73,28 @@
         </div>
     </section>
     
+    <!-- Incluir Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
-        // Función para auto-scroll
+        // Función para auto-scroll en el chatbox
         function scrollChatBox() {
             chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        // Función para utilizar Typed.js y escribir un mensaje en un contenedor
+        function typeMessage(targetSelector, message, callback) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = "text-gray-800 mt-2";
+            document.querySelector(targetSelector).appendChild(messageDiv);
+            new Typed(messageDiv, {
+                strings: [message],
+                typeSpeed: 15,
+                showCursor: false,
+                onComplete: function() {
+                    if (callback) callback();
+                }
+            });
+            scrollChatBox();
         }
 
         // Elementos del DOM
@@ -111,12 +123,12 @@
         let currentQuestion = 0;
         let userAnswers = [];
 
-        // Ajuste de la puntuación: se resta 1 para tener valores de 0 a 3.
+        // Ajuste de puntuación: convierte respuestas de 1-4 a 0-3
         function getAdjustedScore(answer) {
             return parseInt(answer) - 1;
         }
 
-        // Categoría basada en puntaje (0-24)
+        // Determinar la categoría basada en el puntaje (0-24)
         function getDepressionCategory(score) {
             if (score <= 4) return "No tiene depresión";
             else if (score <= 9) return "Inicios de depresión";
@@ -124,42 +136,37 @@
             else return "Depresión severa";
         }
 
-        // Mostrar el modal y comenzar la interacción
+        // Función para iniciar el chat con un mensaje de saludo
+        function startChat() {
+            chatbox.innerHTML = "";
+            currentQuestion = 0;
+            userAnswers = [];
+            typeMessage("#chatbox", "¡Hola! Soy tu asistente. Comenzaremos el test PHQ-8. Responde con 1, 2, 3 o 4 según lo siguiente:<br>1: Nada, 2: Pocos días, 3: Más de la mitad de los días, 4: Casi todos los días.", function() {
+                setTimeout(showNextQuestion, 1000);
+            });
+        }
+
+        // Al hacer clic en "Detección de Depresión"
         depressionBtn.addEventListener('click', () => {
             modal.classList.remove('hidden');
             interactionContainer.classList.add('hidden');
-            showNextQuestion();
+            startChat();
         });
 
-        // Cerrar el modal y mostrar los botones nuevamente
+        // Cerrar el modal
         closeModalBtn.addEventListener('click', () => {
             modal.classList.add('hidden');
             interactionContainer.classList.remove('hidden');
         });
 
-        // Función para simular que la IA está escribiendo
-        function showTypingIndicator(callback) {
-            chatbox.innerHTML += `<div id="typing-indicator" class="text-gray-800 mt-2 italic">El asistente está escribiendo...</div>`;
-            scrollChatBox();
-            setTimeout(() => {
-                const indicator = document.getElementById('typing-indicator');
-                if (indicator) indicator.remove();
-                callback();
-            }, 1500);
-        }
-
-        // Mostrar la siguiente pregunta
+        // Función para mostrar la siguiente pregunta con Typed.js
         function showNextQuestion() {
             if (currentQuestion < questions.length) {
-                showTypingIndicator(() => {
-                    chatbox.innerHTML += `<div class="text-gray-800 mt-2">${questions[currentQuestion]}</div>`;
+                typeMessage("#chatbox", questions[currentQuestion], function() {
                     currentQuestion++;
-                    scrollChatBox();
                 });
             } else {
-                showTypingIndicator(() => {
-                    chatbox.innerHTML += `<div class="text-gray-800 mt-2">Gracias por completar el test. Se mostrarán los resultados.</div>`;
-                    scrollChatBox();
+                typeMessage("#chatbox", "Gracias por completar el test. Se mostrarán los resultados.", function() {
                     setTimeout(() => {
                         modal.classList.add('hidden');
                         showResults();
@@ -168,27 +175,26 @@
             }
         }
 
-        // Manejar el envío de respuestas del usuario
+        // Manejar el envío de respuestas
         sendBtn.addEventListener('click', () => {
             const answer = userResponse.value.trim();
             if (["1", "2", "3", "4"].includes(answer)) {
                 userAnswers.push(getAdjustedScore(answer));
-                chatbox.innerHTML += `<div class="text-gray-800">Tu respuesta: ${answer}</div>`;
-                userResponse.value = '';
-                scrollChatBox();
-                showNextQuestion();
+                typeMessage("#chatbox", `Tu respuesta: ${answer}`, function() {
+                    showNextQuestion();
+                });
+                userResponse.value = "";
             } else {
-                chatbox.innerHTML += `<div class="text-red-600">Por favor, responde con 1, 2, 3 o 4.</div>`;
-                scrollChatBox();
+                typeMessage("#chatbox", "Por favor, responde con 1, 2, 3 o 4.");
             }
         });
 
-        // Mostrar resultados
+        // Mostrar los resultados en la sección de resultados
         function showResults() {
             let totalScore = userAnswers.reduce((acc, val) => acc + val, 0);
             const category = getDepressionCategory(totalScore);
             resultContainer.classList.remove('hidden');
-            resultText.textContent = `Tu puntaje es ${totalScore} (de 0 a 24) - ${category}`;
+            resultText.innerHTML = `Tu puntaje es <strong>${totalScore}</strong> (de 0 a 24) - <em>${category}</em>`;
         }
     </script>
 @endsection

@@ -24,10 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () =>{
     new Typed("#typed-mision", {
         strings: ["Innovación en Salud Mental", "Tecnología con Propósito", "Cuidado Preventivo"],
-        typeSpeed: 50,
+        typeSpeed: 150,
         backSpeed: 30,
         loop: true,
-        showCursor: false,
     });
 })
 
