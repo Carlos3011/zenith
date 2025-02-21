@@ -2,9 +2,14 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PublicController;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(PublicController::class)->group(function () {
+    Route::get('/', 'inicio')->name('inicio');
+    Route::get('/acerca', 'acerca')->name('acerca');
+    Route::get('/ofertas', 'recurso')->name('recursos');
+    Route::get('/miembros', 'miembros')->name('miembros');
+    Route::get('/chatbots', 'chatbots')->name('chatbots');
 });
 
 Route::get('/dashboard', function () {

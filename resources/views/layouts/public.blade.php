@@ -28,21 +28,21 @@
       </a>
       <!-- Menú Desktop -->
       <ul class="hidden md:flex items-center gap-8">
-        <li>
-          <a href="{{ route('inicio') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Inicio</a>
-        </li>
-        <li>
-          <a href="{{ route('acerca') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Acerca</a>
-        </li>
-        <li>
-          <a href="{{ route('miembros') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Equipo</a>
-        </li>
-        <li>
-          <a href="{{ route('chatbots') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Chatbots</a>
-        </li>
-        <!--li>
-          <a href="{{ route('recursos') }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">Recursos</a>
-        </li-->
+        @foreach([
+            'inicio' => ['Inicio', 'fas fa-home'],
+            'acerca' => ['Acerca de', 'fas fa-info-circle'],
+            'miembros' => ['Equipo', 'fas fa-users'],
+            'chatbots' => ['Chatbots', 'fas fa-comments'],
+            'login' => ['Ingresar', 'fas fa-user'],
+            'register' => ['Registrarse', 'fas fa-user-plus']
+            ] as $route => [$label, $icon])
+            <li>
+                <a href="{{ route($route) }}" class="text-gray-600 hover:text-primary-600 transition-all font-medium">
+                    <i class="{{ $icon }}"></i> 
+                    <span>{{ $label}}</span>   
+                </a>
+            </li>
+        @endforeach
       </ul>
       <!-- Botón Menú Móvil -->
       <button id="mobile-menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
