@@ -52,21 +52,18 @@
     <!-- Menú Móvil -->
     <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-md border-t border-primary-100">
       <ul class="flex flex-col space-y-2 px-6 py-4">
-        <li>
-          <a href="{{ route('inicio') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Inicio</a>
-        </li>
-        <li>
-          <a href="{{ route('acerca') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Acerca</a>
-        </li>
-        <li>
-          <a href="{{ route('miembros') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Equipo</a>
-        </li>
-        <li>
-          <a href="{{ route('chatbots') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Chatbots</a>
-        </li>
-        <!--li>
-          <a href="{{ route('recursos') }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">Recursos</a>
-        </li-->
+        @foreach ([
+          'inicio' => ['Inicio'],
+          'acerca' => ['Acerca de'],
+          'miembros' => ['Equipo'],
+          'chatbots' => ['Chatbots'],
+          'login' => ['Ingresar'],
+          'register' => ['Registrarse']
+          ] as $route => [$label])
+          <li>
+            <a href="{{ route($route) }}" class="block w-full text-center text-gray-600 hover:text-primary-600 transition-all font-medium">{{ $label }}</a>
+          </li>
+        @endforeach
       </ul>
     </div>
   </header>
